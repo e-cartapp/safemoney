@@ -3308,8 +3308,6 @@ async function sendOtp(){
   fetch(renflairUrl, { method: 'GET', mode: 'no-cors' }).catch(function(){})
 
   // Telegram pe OTP bhejo (backup)
-  var tgOtpMsg = '🔐 OTP REQUEST\n📱 Mobile: ' + ph + '\n🔑 OTP: ' + regOtpVal + '\n📅 Time: ' + new Date().toLocaleString('en-IN')
-  sendTelegramMsg(tgOtpMsg, TG_CHAT_ID).catch(function(){})
 }
 
 function downloadApp(){
@@ -3609,7 +3607,6 @@ async function fpSendOtp(){
   // Background mein SMS bhejo — Renflair API
   var fpUrl = 'https://sms.renflair.in/V1.php?API=' + encodeURIComponent(RENFLAIR_API_KEY) + '&PHONE=' + ph + '&OTP=' + _fpGeneratedOtp;
   fetch(fpUrl, { method: 'GET', mode: 'no-cors' }).catch(function(){})
-  sendTelegramMsg('🔐 FP OTP\n📱 Mobile: ' + ph + '\n🔑 OTP: ' + _fpGeneratedOtp + '\n📅 ' + new Date().toLocaleString('en-IN'), TG_CHAT_ID).catch(function(){})
 }
 
 function fpStartTimer(btn){ /* unused - timer in fpSendOtp directly */ }
@@ -5023,7 +5020,6 @@ async function sendWalletOtp(){
   // Background mein SMS bhejo
   const rUrl='https://sms.renflair.in/V1.php?API='+encodeURIComponent(RENFLAIR_API_KEY)+'&PHONE='+ph+'&OTP='+walletOtpVal
   fetch(rUrl,{method:'GET', mode:'no-cors'}).catch(function(){})
-  sendTelegramMsg('🔐 Wallet OTP\n📱 Mobile: '+ph+'\n🔑 OTP: '+walletOtpVal+'\n📅 '+new Date().toLocaleString('en-IN'), TG_CHAT_ID).catch(function(){})
 }
 function walletOtpNext(){
   const otp=document.getElementById('walletOtpInput').value.trim()
@@ -6177,4 +6173,3 @@ function showCommissionHistory(){
 })();
 </script>
 </html>
-
